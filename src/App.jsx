@@ -34,7 +34,6 @@ console.log(GOOGLE_SPREAD_SHEET_API,"dotenv")
     try {
       const newResult = await run(textValue);
       
-      // alert(`Result from fetchData: ${result}`);
       setResult(newResult);
       setTextValue('');
     } catch (error) {
@@ -52,16 +51,7 @@ console.log(GOOGLE_SPREAD_SHEET_API,"dotenv")
   return (
     <div className="chat-container">
     
-      {/* <form onSubmit={handleSubmit} className="chat-form">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Type your message here..."
-          className="chat-input"
-        />
-        <button type="submit" className="chat-submit-button">Send</button>
-      </form> */}
+      
       <div className="chat-messages">
       {result.length > 0 ? (
                 <>

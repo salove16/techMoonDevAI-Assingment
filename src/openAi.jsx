@@ -1,20 +1,26 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import axios from 'axios';
-// require('dotenv').config()
+
 // Access your API key as an environment variable (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI(GENAI_APIKEY);
 
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 
 
-
+// Fetches the AI-generated post based on the provided prompt.
+// This function interacts with an AI model to generate a post that continues
+// from the given prompt text. It then retrieves and returns the generated post.
+// 
+// Parameters:
+//   prompt (string): The initial text or prompt to start the generation process.
+//
+// Returns:
+//   string: The AI-generated post that follows the provided prompt. 
 export  async function run(prompts) {
   
   
     const result = await model.generateContent(prompts);
     const response = await result.response;
     const text = response.text();
-    console.log(text);
     const newData = {
         Timestamp: new Date().toISOString(), // Assuming a timestamp column
         Prompt:prompts ,
@@ -28,9 +34,9 @@ export  async function run(prompts) {
   
 
  
-
+// Handles a POST request to store data in a Google Spreadsheet.
 async function storeData(data) {
-  // const url = "https://sheetdb.io/api/v1/l0a73d5kkzjyu";
+  
   const response = await fetch(GOOGLE_SPREAD_SHEET_API, {
     method: 'POST',
     headers: {
@@ -43,8 +49,11 @@ async function storeData(data) {
     throw new Error('Failed to post data');
   }
 }
+
+
+// Handles a GET request to fetch data in a Google Spreadsheet.
 export async function readData() {
-    // const url = "https://sheetdb.io/api/v1/l0a73d5kkzjyu";
+   
     const response = await fetch(GOOGLE_SPREAD_SHEET_API, {
       method: 'GET',
     });
