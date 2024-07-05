@@ -3,7 +3,7 @@
 This assignment involves setting up a web application where users can input a prompt to generate social media posts text using OpenAI's API. These posts should then be saved to a Google Spreadsheet using Google Sheets API (without using Google SDKs). For a bonus, the application should be able to fetch and display the posts from the spreadsheet.
 ## Table of Contents
 
-- [Your Tasks](#Your Tasks)
+- [Your Tasks](#yourTasks)
 - [Installation](#installation)
 - [Google Spreadsheet](#google-spreadsheet)
 
